@@ -16,6 +16,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        this.isAuth = !!user;
+      }
+    );
+  }
+
+  onSignOut() {
+    this.authService.signOutUser();
   }
 
 }
